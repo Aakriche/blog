@@ -15,13 +15,39 @@ h3
     margin-top:0px;
 
 }
-.news
+.news, .formulaire
 {
     width:70%;
     margin:auto;
 
 }
 
+.formulaire {
+    display: flex;
+    border: thin solid black;
+    flex-direction: column;
+}
+label {
+    margin: 10px 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 20%;
+    margin: 0 10px;
+    background-color: rgb(230, 224, 224);
+}
+textarea {
+    width: 50%;
+    height: 150px;
+    margin: 0 10px;
+    background-color: rgb(230, 224, 224);
+}
+
+button {
+    width: 10%;
+    margin: 10px 20px;
+}
 a
 {
     text-decoration: none;

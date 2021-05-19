@@ -23,31 +23,44 @@
         die('Erreur : ' . $e->getMessage());
     }
 
-
+// Le billet + formulaire
 $searchResp = $searchSend->prepare("SELECT DISTINCT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%imin%ss') AS date
 FROM billets
 WHERE ( id LIKE '%{$idBillet}%' ) ");
 $searchResp->execute(array($idBillet));
 $donnees = $searchResp->fetch();
+if (empty($donnees)){
+    echo "<h1>Billet inconnu</h1>";
+}else{
 
 
-echo '<div class="news">
-            <h3>'
-                .htmlspecialchars(ucfirst($donnees['titre']))
-                .' '
-                .$donnees['date']
-                .'</h3><p>'
-                .htmlspecialchars(ucfirst($donnees['contenu']))
-                .'</p></div>';
+    echo '<div class="news">
+                <h3>'
+                    .htmlspecialchars(ucfirst($donnees['titre']))
+                    .' '
+                    .$donnees['date']
+                    .'</h3><p>'
+                    .htmlspecialchars(ucfirst($donnees['contenu']))
+                    .'</p></div>';
 
 
-                ?>
-<div class="commentaires">
-    
-<?php
+    // Le formulaire
+    echo'
+    <form class="formulaire" action="commentaires.ext.php?id=<?php echo $idBillet ?>" method="POST">
+    <label>Pseudo</label>
+    <input type="text" name="pseudo">
+    <label>Commentaire</label>
+    <textarea type="text" name="commentaire"></textarea>
+    <button type="submit" name="submit">Envoyer</button>
 
+    </form>
+
+    <div class="commentaires">';
+
+    // Les commentaires
 
     echo '<h2>Commentaires</h2>';
+}
 
     $searchResp = $searchSend->prepare("SELECT DISTINCT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin%ss') AS date 
     FROM commentaires 
@@ -68,6 +81,9 @@ echo '<div class="news">
     $searchResp->closeCursor();
 ?>
 </div>
+
+
+
 
 
 </body>
