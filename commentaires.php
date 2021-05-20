@@ -46,7 +46,7 @@ if (empty($donnees)){
 
     // Le formulaire
     echo'
-    <form class="formulaire" action="commentaires.ext.php?id=<?php echo $idBillet ?>" method="POST">
+    <form class="formulaire" action="commentaires.ext.php?id='.$idBillet.' "method="POST">
     <label>Pseudo</label>
     <input type="text" name="pseudo">
     <label>Commentaire</label>
