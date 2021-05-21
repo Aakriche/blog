@@ -1,3 +1,16 @@
+<?php
+$idBillet = $_GET['id'];
+    try
+    {
+    $searchSend = new PDO('mysql: host=localhost;dbname=forum', 'root', '');
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +26,7 @@
     <br>
     <h4><a href="index.php">Retour à la liste des billets</a></h4>
 <?php
-    $idBillet = $_GET['id'];
-    try
-    {
-    $searchSend = new PDO('mysql: host=localhost;dbname=forum', 'root', '');
-    }
-    catch (Exception $e)
-    {
-        die('Erreur : ' . $e->getMessage());
-    }
+
 
 // Le billet + formulaire
 $searchResp = $searchSend->prepare("SELECT DISTINCT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%imin%ss') AS date
@@ -46,15 +51,13 @@ if (empty($donnees)){
 
     // Le formulaire
     echo'
-    <form class="formulaire" action="commentaires.ext.php?id=<?php echo $idBillet ?>" method="POST">
+    <form class="formulaire" action="commentaires.ext.php?id='.$idBillet.' "method="POST">
     <label>Pseudo</label>
     <input type="text" name="pseudo">
     <label>Commentaire</label>
     <textarea type="text" name="commentaire"></textarea>
     <button type="submit" name="submit">Envoyer</button>
-
     </form>
-
     <div class="commentaires">';
 
     // Les commentaires

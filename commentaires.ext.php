@@ -35,10 +35,10 @@ if(isset($_POST["submit"])){
         $res->execute(array($pseudo, $commentaire, $idBillet));
 
         if(!$res){
-            header("Location: ./commentaires.php?id={$idBillet}&error=sqlerror");
+            header("Location: ./commentaires.php?id=".$idBillet."&error=sqlerror");
             exit(); 
         }else{
-            header("Location: ./commentaires.php?id={$idBillet}&comment=success");
+            header("Location: ./commentaires.php?id=".$idBillet."&comment=success");
             exit();
         }
 
