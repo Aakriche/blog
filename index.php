@@ -8,7 +8,7 @@ try {
             listPosts();
         }
 
-        else if ($_GET['action'] == 'post') {
+        elseif ($_GET['action'] == 'post') {
 
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 post();
@@ -18,8 +18,8 @@ try {
             }
         }elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['pseudo']) && !empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_POST['pseudo'], $_POST['comment']);
+                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 }
                 else {
                     throw new Exception('Erreur : tous les champs ne sont pas remplis !');
@@ -34,7 +34,7 @@ try {
     }
 }
 catch(Exception $e){
-    echo 'Erreur : '. $e->getMessage();
+    echo 'error';
 }
 
 

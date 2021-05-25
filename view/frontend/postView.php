@@ -17,11 +17,11 @@
  </div>
 
 
- 
+
 
  <form class="formulaire" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>"method="POST">
  <label>Pseudo</label>
- <input type="text" name="pseudo">
+ <input type="text" name="author">
  <label>Commentaire</label>
  <textarea type="text" name="comment"></textarea>
  <button type="submit" name="submit">Envoyer</button>
@@ -48,4 +48,5 @@
 
 ?>
 <?php $content = ob_get_clean(); ?>
+<?php var_dump($post); ?>
 <?php require('template.php'); ?>
