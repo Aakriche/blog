@@ -49,5 +49,15 @@ function dbConnect() {
     }
 }
 
+function postComment($postId, $author, $comment){
+
+    $db = dbConnect();
+    $comments = $db->prepare("INSERT INTO commentaires(author,comment, post_id) VALUES (?, ?, ?);");
+    $affectedLines = $comments->execute(array($author, $comment, $postId));
+
+    return $affectedLines;
+
+}
+
 
 ?>
