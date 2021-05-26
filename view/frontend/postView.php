@@ -9,7 +9,8 @@
 <div class="news">
      <h3>
          <?=htmlspecialchars(ucfirst($post['title'])) ?>
-         <?= $post['date'] ?>
+         <?= $post['creation_date_fr'] ?>
+         (<a href="index.php?action=editComment&amp;id=<?= $post['id'] ?>">modifier</a>)
      </h3>
      <p>
          <?= htmlspecialchars(ucfirst($post['content'])) ?>

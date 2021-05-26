@@ -10,7 +10,7 @@
         <div class="news">
             <h3>
             <?= htmlspecialchars(ucfirst($data['title'])) ?>
-               le <?= $data['date'] ?>
+               le <?= $data['creation_date_fr'] ?>
             </h3>
             <p>
                 <?= htmlspecialchars(ucfirst($data['content'])) ?>
